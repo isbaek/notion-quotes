@@ -8,6 +8,9 @@ function Quote () {
         getZenQuotes().then(({ content, author }) => {
             setText(content)
             setAuthor(author)
+        }).catch((err) => {
+            console.log(err);
+            setText('Error: Please contact studiorach.com for assistance.')
         })
     }, [])
     return (
