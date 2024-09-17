@@ -1,6 +1,5 @@
 name: Deploy on Push to Master
 
-# This workflow will run whenever code is pushed to the master branch
 on:
   push:
     branches:
@@ -11,29 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Set up Node.js environment
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  # or any version your project uses
+        node-version: '16'
 
-    # Install dependencies
     - name: Install dependencies
       run: npm install
 
-    # Run your deploy script
-    - name: Run deploy script
-      run: npm run deploy
+    - name: Set git config
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "actions@github.com"
 
-    # Optional: Add caching to speed up installs (requires npm cache)
-    - name: Cache node modules
-      uses: actions/cache@v3
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-modules-
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      run: |
+        npm install -g gh-pages
+        npm run deploy
