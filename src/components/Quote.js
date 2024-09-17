@@ -5,9 +5,10 @@ function Quote () {
     const [text, setText] = useState('');
     const [author, setAuthor] = useState('');
     useEffect(() => {
-        getZenQuotes().then(({ content, author }) => {
-            setText(content)
-            setAuthor(author)
+        getZenQuotes().then(data => {
+            const _data = data[0] ?? { q: 'Hello World', a: '' };
+            setText(_data?.q)
+            setAuthor(_data?.a)
         }).catch((err) => {
             console.log(err);
             setText('Error: Please contact studiorach.com for assistance.')
