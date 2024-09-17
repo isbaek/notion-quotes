@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a2da29c7.css",
-    "main.js": "/static/js/main.5b45cb7b.js",
+    "main.js": "/static/js/main.91338399.js",
     "static/js/787.0853ef26.chunk.js": "/static/js/787.0853ef26.chunk.js",
     "static/media/Black Delights.ttf": "/static/media/Black Delights.6da0a9a0562d501e7c36.ttf",
     "static/media/Black Delights.otf": "/static/media/Black Delights.aadb60359a2202565ff2.otf",
@@ -9,11 +9,11 @@
     "static/media/background-circle.svg": "/static/media/background-circle.ae81964d022ef19518f3c58549df21bf.svg",
     "index.html": "/index.html",
     "main.a2da29c7.css.map": "/static/css/main.a2da29c7.css.map",
-    "main.5b45cb7b.js.map": "/static/js/main.5b45cb7b.js.map",
+    "main.91338399.js.map": "/static/js/main.91338399.js.map",
     "787.0853ef26.chunk.js.map": "/static/js/787.0853ef26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2da29c7.css",
-    "static/js/main.5b45cb7b.js"
+    "static/js/main.91338399.js"
   ]
 }
