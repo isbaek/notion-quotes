@@ -1,9 +1,9 @@
-name: Deploy on Push to Master
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - master  # Only deploy when changes are pushed to master
 
 jobs:
   deploy:
@@ -21,15 +21,20 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Set git config
+    - name: Set git config for deployment
       run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
 
-    - name: Build project
-      run: npm run build
-
+    # Deploy the built project to gh-pages branch
     - name: Deploy to GitHub Pages
       run: |
         npm install -g gh-pages
-        npm run deploy
+        npm run build
+        gh-pages -d build -b gh-pages
+
+    # Set up the GitHub token for the push
+    - name: Push to gh-pages
+      run: |
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        git push origin gh-pages
